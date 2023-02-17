@@ -7,7 +7,7 @@ db = dbase.dbConnection()
 
 app = Flask(__name__)
 
-# http://127.0.0.1:4000/
+# http://127.0.0.1:5000/
 # Mykol9988
 # lester.aucapina@unl.edu.ec
 
@@ -24,7 +24,7 @@ def logout():
 def ver_estudiantes_matriculados():
     matriculas = db['matricula']
     def filtrar_por_matriculados(matricula,matriculado):
-        return matricula['matriculado']
+        return matricula['matriculado']==True
     personas = filter(lambda m: filtrar_por_matriculados(m,'matriculado'),matriculas.find())
     return render_template('ver_estudiantes.html',personas=personas)
 
@@ -137,7 +137,7 @@ def registerPost():
             alert = "Usuario registrado satisfactoriamente"
             return render_template("register.html",alert = alert)
 
-# http://127.0.0.1:4000/imprimir-ficha/1150579124
+# http://127.0.0.1:5000/imprimir-ficha/1150579124
 
 
 @app.route('/imprimir-ficha/<string:student_id>')
